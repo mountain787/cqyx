@@ -1,20 +1,21 @@
+from flask import Flask, request, jsonify, Response
 from cqyx_ts import Parser
 
+app = Flask(__name__)
 parser = Parser()
 
-def handler(请求):
-    try:
-        params = dict(request.args)
 
-        # m3u8代理
+@app.route("/", methods=["GET"])
+def main():
+    try:
+        params = request.args.to_dict()
+
         if "type" in params:
             content, headers = parser.proxy(request.url, {})
-            return content, 200, headers
+            return Response(content, headers=headers)
 
-        # 获取播放入口
         result = parser.parse(params)
-
-        return result
+        return jsonify(result)
 
     except Exception as e:
-        return {"error": str(e)}
+        return jsonify({"error": str(e)})

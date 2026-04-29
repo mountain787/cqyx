@@ -4,8 +4,8 @@ from cqyx_ts import Parser
 app = Flask(__name__)
 parser = Parser()
 
-
 @app.route("/", methods=["GET"])
+@app.route("/api", methods=["GET"])   # 👈 关键
 def main():
     try:
         params = request.args.to_dict()

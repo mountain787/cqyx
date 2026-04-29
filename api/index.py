@@ -4,7 +4,7 @@ parser = Parser()
 
 def handler(请求):
     try:
-        params = request.args
+        params = dict(request.args)
 
         # m3u8代理
         if "type" in params:
@@ -14,7 +14,7 @@ def handler(请求):
         # 获取播放入口
         result = parser.parse(params)
 
-        return result, 200
+        return result
 
     except Exception as e:
-        return {"error": str(e)}, 500
+        return {"error": str(e)}

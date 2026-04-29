@@ -54,8 +54,8 @@ class Parser:
             start_seq = (current - live_delay) // seg
             count = 405 if is_special else 81
 
-        video_base = f'https://tencent.live.cbncdn.cn/__cl/cg:live/__c/{channel_id}/__op/default/__f/{video_path}'
-        audio_base = f'https://tencent.live.cbncdn.cn/__cl/cg:live/__c/{channel_id}/__op/default/__f/{audio_path}'
+        video_base = f'http://tencent.live.cbncdn.cn/__cl/cg:live/__c/{channel_id}/__op/default/__f/{video_path}'
+        audio_base = f'http://tencent.live.cbncdn.cn/__cl/cg:live/__c/{channel_id}/__op/default/__f/{audio_path}'
 
         lines = ["#EXTM3U", "#EXT-X-VERSION:3"]
 
